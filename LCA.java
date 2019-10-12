@@ -1,25 +1,24 @@
 public class LCA {
-    public static void main(String[] args) {
 
+    public static Tree initializeTree (Node n) {
+        Tree t = new Tree(n);
+        return t;
     }
 
-    public static Boolean isAncestor(Node n, Node ancestor) {
-        if (found (ancestor, n)) {
-            return true;
+    public static Node commonAncestor (Node a, Node b) {
+        if (isAncestor (a, b)) {
+            return a;
         }
+        if (isAncestor(b, a)) {
+            return b;
+        }
+        //TODO(barbut): add implementation
+        return null;
+    }
+
+    public static boolean isAncestor (Node ancestor, Node n) {
+        //TODO(barbut): add implementation
         return false;
     }
 
-    public static Boolean found (Node root, Node n) {
-        if (root == null) {
-            return false;
-        }
-        else if (root == n) {
-            return true;
-        }
-        if (found (root.leftKid, n) || found (root.rightKid, n)) {
-            return true;
-        }
-        return false;
-    }
 }
