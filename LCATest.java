@@ -1,4 +1,8 @@
 import org.junit.*;
+
+import java.util.Arrays;
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class LCATest {
@@ -41,5 +45,15 @@ public class LCATest {
         assertEquals (e, LCA.commonAncestor(h, j));
         //case with two nodes
         //default case
+    }
+
+    @Test
+    public void testDGA() {
+        Node a = new Node(1);
+        Node b = new Node (2);
+        a.in = new ArrayList<Node> (Arrays.asList(b));
+        b.out = new ArrayList<Node> (Arrays.asList(a));
+        Tree t = LCA.initializeTree(a);
+        assertEquals(a, LCA.commonAncestor(a, b));
     }
 }
