@@ -15,17 +15,25 @@ public class LCA {
         if (isAncestor(b, a)) {
             return b;
         }
-        return commonAncestor(a.parent, b);
+        for (int i = 0; i < a.out.size(); i++) {
+            Node retNode = commonAncestor(a.out.get(i), b);
+            if (retNode != null)
+                return retNode;
+        }
+        return null;
     }
 
     public static boolean isAncestor (Node ancestor, Node n) {
-        //TODO(barbut): add implementation
         if (ancestor != null) {
-            if (ancestor.leftKid == n || ancestor.rightKid == n || ancestor == n) {
+            if (ancestor == n) {
                 return true;
             }
-            if (isAncestor(ancestor.leftKid, n) || isAncestor(ancestor.rightKid, n)) {
-                return true;
+            Node tmp = ancestor.out.get(0);
+            System.out.println(tmp.tag);
+            for (int i = 0; i < ancestor.out.size(); i++) {
+                if (ancestor.out.get(i) == n || isAncestor(ancestor.out.get(i), n)) {
+                    return true;
+                }
             }
         }
         return false;
