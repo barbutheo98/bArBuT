@@ -28,13 +28,11 @@ public class LCA {
             if (ancestor == n) {
                 return true;
             }
-            Node tmp = ancestor.out.get(0);
-            System.out.println(tmp.tag);
-            for (int i = 0; i < ancestor.out.size(); i++) {
-                if (ancestor.out.get(i) == n || isAncestor(ancestor.out.get(i), n)) {
-                    return true;
+                for (int i = 0; i < ancestor.out.size(); i++) {
+                    if (isAncestor(ancestor.out.get(i), n)) {
+                        return true;
+                    }
                 }
-            }
         }
         return false;
     }
