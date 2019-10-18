@@ -10,30 +10,34 @@ public class LCA {
             return null;
         }
         if (isAncestor (a, b)) {
-            return a;
-        }
-        if (isAncestor(b, a)) {
             return b;
         }
-        for (int i = 0; i < a.out.size(); i++) {
-            Node retNode = commonAncestor(a.out.get(i), b);
-            if (retNode != null)
-                return retNode;
+        if (isAncestor(b, a)) {
+            return a;
+        }
+        if (a.out != null) {
+            for (int i = 0; i < a.out.size(); i++) {
+                Node retNode = commonAncestor(a.out.get(i), b);
+                if (retNode != null)
+                    return retNode;
+            }
         }
         return null;
     }
 
     public static boolean isAncestor (Node ancestor, Node n) {
-        if (ancestor != null) {
+
             if (ancestor == n) {
                 return true;
             }
-                for (int i = 0; i < ancestor.out.size(); i++) {
-                    if (isAncestor(ancestor.out.get(i), n)) {
-                        return true;
+                if (ancestor.out != null) {
+                    for (int i = 0; i < ancestor.out.size(); i++) {
+                        if (isAncestor(ancestor.out.get(i), n)) {
+                            return true;
+                        }
                     }
                 }
-        }
+
         return false;
     }
 

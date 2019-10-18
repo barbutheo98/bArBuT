@@ -9,11 +9,12 @@ public class LCATest {
 
     @Test
     public void testDGA() {
-        Node a = new Node(1, null, null);
+        Node a = new Node(1, null);
         Tree t = LCA.initializeTree(a);
+        assertEquals(a, LCA.commonAncestor(a, a));
         ArrayList<Node> l = new ArrayList<Node>();
         l.add(a);
-        Node b = t.addNode(l, null, 2);
+        Node b = t.addNode(l, 2);
         assertEquals(a, LCA.commonAncestor(a, b));
     }
 }
