@@ -32,5 +32,6 @@ public class LCATest {
         l.add(d); l.add(f);
         Node g = t.addNode(l,7);
         assertEquals(a, LCA.commonAncestor(a, g));
+        assertEquals(a, LCA.commonAncestor(g, a));
     }
 }
